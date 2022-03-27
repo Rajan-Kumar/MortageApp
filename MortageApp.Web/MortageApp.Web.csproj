@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Data\MortgageDbContext.cs" />
+    <Compile Remove="Enum\MortgageEnum.cs" />
+    <Compile Remove="Migrations\20220327061109_AddMortgageToDatabase.cs" />
+    <Compile Remove="Migrations\20220327061109_AddMortgageToDatabase.Designer.cs" />
+    <Compile Remove="Migrations\MortgageDbContextModelSnapshot.cs" />
+    <Compile Remove="Models\Mortgage.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\" />
+    <Folder Include="Enum\" />
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Mortgage.Data\Mortgage.Data.csproj" />
+    <ProjectReference Include="..\Mortgage.Services\Mortgage.Services.csproj" />
+  </ItemGroup>
+
+</Project>

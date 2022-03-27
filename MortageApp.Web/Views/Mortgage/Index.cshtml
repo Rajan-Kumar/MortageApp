@@ -1,0 +1,25 @@
+﻿@model IEnumerable<MortgageViewModel>
+
+@{
+    ViewData["title"] = "Index";
+}
+
+<h1>Mortgage List</h1>
+
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>Mortgage Name</th>
+            <th>InterestRepayment</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var obj in Model)
+        {
+            <tr>
+                <td width="50%">@obj.Name</td>
+                <td width="50%">@obj.InterestRepayment</td>
+            </tr>
+        }
+    </tbody>
+</table>
