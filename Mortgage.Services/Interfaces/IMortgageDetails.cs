@@ -10,5 +10,6 @@ namespace Mortgage.Services.Interfaces
     public interface IMortgageDetails
     {
         List<Mortgage.Data.Entity.Mortgage> GetAllMortages();
+        bool AddMortgage(Mortgage.Data.Entity.Mortgage mortgage);
     }
 }

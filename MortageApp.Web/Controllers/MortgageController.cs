@@ -46,10 +46,20 @@ namespace MortageApp.Web.Controllers
         // POST: MortgageController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(MortgageViewModel collection)
         {
             try
             {
+                Mortgage.Data.Entity.Mortgage mortgage = new Mortgage.Data.Entity.Mortgage();
+                mortgage.Name = collection.Name;
+                //mortgage.MortgageType = collection.MortgageType.;
+                //mortgage.InterestRepayment = collection.InterestRepayment;
+                mortgage.EffectiveStartDate = collection.EffectiveStartDate;
+                mortgage.EffectiveEndDate = collection.EffectiveEndDate;
+                mortgage.TermsInMonths = collection.TermsInMonths;
+                mortgage.CancellationFee = collection.CancellationFee;
+                mortgage.EstablishmentFee = collection.EstablishmentFee;
+                _mortgageDetails.AddMortgage(mortgage);
                 return RedirectToAction(nameof(Index));
             }
             catch

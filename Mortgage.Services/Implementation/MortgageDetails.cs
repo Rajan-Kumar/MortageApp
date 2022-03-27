@@ -21,6 +21,11 @@ namespace Mortgage.Services.Implementation
         public List<Mortgage.Data.Entity.Mortgage> GetAllMortages()
         {
             return _mortgageDbDetails.GetAllMortages();
-        }       
+        }
+
+        bool IMortgageDetails.AddMortgage(Mortgage.Data.Entity.Mortgage mortgage)
+        {
+            return _mortgageDbDetails.AddMortgage(mortgage);
+        }
     }
 }

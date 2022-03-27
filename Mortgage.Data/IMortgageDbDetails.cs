@@ -9,5 +9,6 @@ namespace Mortgage.Data
     public interface IMortgageDbDetails
     {
         List<Entity.Mortgage> GetAllMortages();
+        bool AddMortgage(Entity.Mortgage mortgage);
     }
 }
