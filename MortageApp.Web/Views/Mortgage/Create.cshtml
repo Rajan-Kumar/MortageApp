@@ -11,20 +11,27 @@
             <input asp-for="Name" class="form-control" />
         </div>
         <div class="mb-3">
-            <label asp-for="MortgageType"></label>
-            <input asp-for="MortgageType" class="form-control" />
+            <label asp-for="MortgageType"></label>            
+            <select asp-for="MortgageType" class="form-select">
+                <option>Variable</option>
+                <option>Fixed</option>                
+            </select>
         </div>
         <div class="mb-3">
             <label asp-for="InterestRepayment"></label>
-            <input asp-for="InterestRepayment" class="form-control" />
+            <select asp-for="InterestRepayment" class="form-select">
+                <option>InterestOnly</option>
+                <option>PrincipalAndInterest</option>                
+            </select>
+           
         </div>
         <div class="mb-3">
             <label asp-for="EffectiveStartDate"></label>
-            <input asp-for="EffectiveStartDate" class="form-control" />
+            <input asp-for="EffectiveStartDate" class="datepicker_input form-control" />
         </div>
         <div class="mb-3">
             <label asp-for="EffectiveEndDate"></label>
-            <input asp-for="EffectiveEndDate" class="form-control" />
+            <input asp-for="EffectiveEndDate" class="datepicker_input form-control" />           
         </div>
         <div class="mb-3">
             <label asp-for="TermsInMonths"></label>
@@ -41,7 +48,7 @@
         @*<div class="mb-3">
             <label asp-for="EstablishmentFee"></label>
             <input asp-for="EstablishmentFee" class="form-control" />
-        </div>*@
+            </div>*@
         <button type="submit" class="btn btn-primary" style="width:150px">Create</button>
         <a asp-controller="Mortgage" asp-action="Index">Back to List</a>
     </div>

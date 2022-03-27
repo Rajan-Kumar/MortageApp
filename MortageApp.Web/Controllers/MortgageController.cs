@@ -20,12 +20,17 @@ namespace MortageApp.Web.Controllers
             foreach (var item in mortgageList)
             {
                 listMortgage.Add(new MortgageViewModel()
-                {
+                {                   
                     MortgageId = item.MortgageId,
                     Name = item.Name,
-                    CancellationFee = item.CancellationFee,
-                    EffectiveStartDate = item.EffectiveStartDate,
-                    EstablishmentFee = item.EstablishmentFee                    
+                    //MortgageType = item.MortgageType ,
+                    //InterestRepayment = item.InterestRepayment ,
+                    EffectiveStartDate= item.EffectiveStartDate ,
+                    EffectiveEndDate = item.EffectiveEndDate ,
+                    TermsInMonths = item.TermsInMonths ,
+                    CancellationFee = item.CancellationFee ,
+                    EstablishmentFee = item.EstablishmentFee ,
+                    SchemaIdentifier = item.SchemaIdentifier 
                 });
             }
             return View(listMortgage);
