@@ -23,9 +23,9 @@ namespace MortageApp.Web.Controllers
                 {                   
                     MortgageId = item.MortgageId,
                     Name = item.Name,
-                    //MortgageType = item.MortgageType ,
-                    //InterestRepayment = item.InterestRepayment ,
-                    EffectiveStartDate= item.EffectiveStartDate ,
+                    MortgageType = (MortgageType)Enum.Parse(typeof(MortgageType), item.MortgageType.ToString()),
+                    InterestRepayment = (InterestRepayment)Enum.Parse(typeof(InterestRepayment), item.InterestRepayment.ToString()),
+                    EffectiveStartDate = item.EffectiveStartDate ,
                     EffectiveEndDate = item.EffectiveEndDate ,
                     TermsInMonths = item.TermsInMonths ,
                     CancellationFee = item.CancellationFee ,
@@ -57,7 +57,7 @@ namespace MortageApp.Web.Controllers
             {
                 Mortgage.Data.Entity.Mortgage mortgage = new Mortgage.Data.Entity.Mortgage();
                 mortgage.Name = collection.Name;
-                //mortgage.MortgageType = collection.MortgageType.;
+                //mortgage.MortgageType = (MortgageType)Enum.Parse(typeof(MortgageType), collection.MortgageType.ToString());
                 //mortgage.InterestRepayment = collection.InterestRepayment;
                 mortgage.EffectiveStartDate = collection.EffectiveStartDate;
                 mortgage.EffectiveEndDate = collection.EffectiveEndDate;
