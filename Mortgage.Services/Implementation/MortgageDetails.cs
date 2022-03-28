@@ -18,6 +18,42 @@ namespace Mortgage.Services.Implementation
             _mortgageDbDetails = mortgageDbDetails ?? throw new ArgumentNullException(nameof(mortgageDbDetails));
         }
 
+        public List<Data.Entity.Mortgage> ApplySorting(List<Data.Entity.Mortgage> listMortgage, string sortString)
+        {
+            switch (sortString)
+            {
+                case "Name":
+                    listMortgage= listMortgage.OrderByDescending(x => x.Name).ToList();
+                    break;
+                case "MortgageType":
+                    listMortgage = listMortgage.OrderByDescending(x => x.MortgageType).ToList();
+                    break;
+                case "InterestRepayment":
+                    listMortgage = listMortgage.OrderByDescending(x => x.InterestRepayment).ToList();
+                    break;
+                case "EffectiveStartDate":
+                    listMortgage = listMortgage.OrderByDescending(x => x.EffectiveStartDate).ToList();
+                    break;
+                case "EffectiveEndDate":
+                    listMortgage = listMortgage.OrderByDescending(x => x.EffectiveEndDate).ToList();
+                    break;
+                case "TermsInMonths":
+                    listMortgage = listMortgage.OrderByDescending(x => x.TermsInMonths).ToList();
+                    break;
+                case "CancellationFee":
+                    listMortgage = listMortgage.OrderByDescending(x => x.CancellationFee).ToList();
+                    break;
+                case "EstablishmentFee":
+                    listMortgage = listMortgage.OrderByDescending(x => x.EstablishmentFee).ToList();
+                    break;
+                default:
+                    listMortgage = listMortgage.OrderByDescending(x => x.MortgageId).ToList();
+                    break;
+
+            }
+            return listMortgage;
+        }
+
         public List<Mortgage.Data.Entity.Mortgage> GetAllMortages()
         {
             return _mortgageDbDetails.GetAllMortages();

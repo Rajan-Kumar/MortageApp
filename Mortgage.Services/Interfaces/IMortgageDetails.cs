@@ -11,5 +11,6 @@ namespace Mortgage.Services.Interfaces
     {
         List<Mortgage.Data.Entity.Mortgage> GetAllMortages();
         bool AddMortgage(Mortgage.Data.Entity.Mortgage mortgage);
+        List<Mortgage.Data.Entity.Mortgage> ApplySorting(List<Mortgage.Data.Entity.Mortgage> listMortgage, string sortString);
     }
 }

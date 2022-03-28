@@ -13,24 +13,34 @@ namespace MortageApp.Web.Controllers
             _mortgageDetails = mortgageDetails;
         }
         // GET: MortgageController
-        public ActionResult Index()
+        public ActionResult Index(string searchString, string sorting)
         {
             List<MortgageViewModel> listMortgage = new List<MortgageViewModel>();
             var mortgageList = _mortgageDetails.GetAllMortages().ToList();
+
+            //--------Searching by name and sorting---------
+            //Search has been done for name and terms only. Other is pending
+            if (!string.IsNullOrWhiteSpace(searchString))
+                mortgageList = _mortgageDetails.GetAllMortages().Where(x => x.Name.Contains(searchString)
+                || x.TermsInMonths.ToString() == searchString).ToList();
+
+            if (!string.IsNullOrWhiteSpace(sorting))
+                mortgageList = _mortgageDetails.ApplySorting(mortgageList, sorting);
+            //-----------end searching and sorting-----------
             foreach (var item in mortgageList)
             {
                 listMortgage.Add(new MortgageViewModel()
-                {                   
+                {
                     MortgageId = item.MortgageId,
                     Name = item.Name,
                     MortgageType = (MortgageType)Enum.Parse(typeof(MortgageType), item.MortgageType.ToString()),
                     InterestRepayment = (InterestRepayment)Enum.Parse(typeof(InterestRepayment), item.InterestRepayment.ToString()),
-                    EffectiveStartDate = item.EffectiveStartDate ,
-                    EffectiveEndDate = item.EffectiveEndDate ,
-                    TermsInMonths = item.TermsInMonths ,
-                    CancellationFee = item.CancellationFee ,
-                    EstablishmentFee = item.EstablishmentFee ,
-                    SchemaIdentifier = item.SchemaIdentifier 
+                    EffectiveStartDate = item.EffectiveStartDate,
+                    EffectiveEndDate = item.EffectiveEndDate,
+                    TermsInMonths = item.TermsInMonths,
+                    CancellationFee = item.CancellationFee,
+                    EstablishmentFee = item.EstablishmentFee,
+                    SchemaIdentifier = item.SchemaIdentifier
                 });
             }
             return View(listMortgage);
@@ -113,6 +123,11 @@ namespace MortageApp.Web.Controllers
             {
                 return View();
             }
+        }
+
+        public ActionResult Search(string input)
+        {
+            return View();
         }
     }
 }

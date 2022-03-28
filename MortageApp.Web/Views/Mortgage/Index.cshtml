@@ -5,6 +5,26 @@
 }
 
 <div class="container p-3">
+    <div class="border p-3 mt-4">
+        <form asp-controller="Mortgage" asp-action="Index">
+            <p>
+                Search: <input type="text" name="SearchString" class="form-control"  />
+                Sorting: <select class="form-select" name="sorting">
+                    <option>Name</option>
+                    <option>MortgageType</option>
+                    <option>InterestRepayment</option>
+                    <option>TermsInMonths</option>   
+                    <option>EffectiveStartDate</option>
+                    <option>EffectiveEndDate</option>
+                    <option>InterestRepayment</option>
+                    <option>CancellationFee</option> 
+                    <option>EstablishmentFee</option>  
+                </select>
+                <br />
+                <input type="submit" value="Filter & Sort" class="btn btn-primary" style="width:150px" />
+            </p>           
+        </form>
+    </div>
     <div class="row pt-4">
         <div class="col-6">
             <h2 class="text-primary">Mortgage List</h2>
